@@ -16,34 +16,22 @@ $(document).ready(function() {
     return footerOffset;
   }
 
-  function setSidebarMarginTop(headerOffset) {
-    return $('#sidebar').css({ 'margin-top': headerOffset });
-  }
+  
 
   function initAffix() {
     var headerOffset = getHeaderOffset();
     var footerOffset = getFooterOffset();
-    var sidebarHeight = $('#sidebar').height() + NexT.utils.getSidebarb2tHeight();
-    var contentHeight = $('#content').height();
+   
+ sidebarInner.affix({
+      offset: {
+        top   : headerOffset - sidebarOffset,
+        bottom: footerOffset
+      }
+    });
 
-    // Not affix if sidebar taller then content (to prevent bottom jumping).
-    if (headerOffset + sidebarHeight < contentHeight) {
-      sidebarInner.affix({
-        offset: {
-          top   : headerOffset - sidebarOffset,
-          bottom: footerOffset
-        }
-      });
-    }
-
-    setSidebarMarginTop(headerOffset).css({ 'margin-left': 'initial' });
+    $('#sidebar').css({ 'margin-left': 'initial', 'margin-top': headerOffset });
+    sidebarInner.affix('checkPosition');
   }
-
-  /* function recalculateAffixPosition() {
-    $(window).off('.affix');
-    sidebarInner.removeData('bs.affix').removeClass('affix affix-top affix-bottom');
-    initAffix();
-  } */
 
   function resizeListener() {
     var mql = window.matchMedia('(min-width: 991px)');
@@ -51,6 +39,7 @@ $(document).ready(function() {
       if (e.matches) {
         //recalculateAffixPosition();
         sidebarInner.affix('checkPosition');
+        initAffix();
       }
     });
   }
@@ -58,6 +47,6 @@ $(document).ready(function() {
   initAffix();
   resizeListener();
   // Fixed wrong top alignment if page scrolled to the bottom after cleared cache and browser refresh.
-  sidebarInner.affix('checkPosition');
+ 
 
 });
