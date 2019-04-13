@@ -517,6 +517,10 @@
           
 
   
+ <div id="gitalk-container"></div>
+  
+
+
 
 
 
@@ -839,18 +843,19 @@
 
 
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
    <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '6289b2526042c5549072',
-          clientSecret: 'c07fb8e49f061624585830e830a0b6be156cc624',
-          repo: 'pyhundan.github.io',
-          owner: 'pyhundan',
-          admin: ['pyhundan'],
-          id: location.pathname,
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
+    var gitalk = new Gitalk({
+      clientID: '6289b2526042c5549072',
+      clientSecret: 'c07fb8e49f061624585830e830a0b6be156cc624',
+      repo: 'pyhundan.github.io',
+      owner: 'pyhundan',
+      admin: ['pyhundan'], 
+      id: location.pathname,
+      distractionFreeMode: 'true'
+    })
+    gitalk.render('gitalk-container')           
        </script>
 
   
