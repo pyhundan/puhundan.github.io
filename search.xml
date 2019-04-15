@@ -1,82 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>关于gemini和Pisces的BUG</title>
-      <link href="/2019/04/14/bug/"/>
-      <url>/2019/04/14/bug/</url>
-      
-        <content type="html"><![CDATA[<h2 id="展示问题"><a href="#展示问题" class="headerlink" title="展示问题"></a>展示问题</h2><p>​    在我搭建的过程中，我发现我的博客出现了以下的效果。</p><p><img src="//ws4.sinaimg.cn/large/91d8688ely1g221ah3p05j21h70pndhi.jpg" alt="wrong" width="1915" data-width="1915" data-height="923">    </p><p>​                                <a id="more"></a></p><p>​        (图均来自<a href="https://github.com/theme-next/hexo-theme-next/issues/426" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next/issues/426</a>)</p><p>而我期望的效果为：<img src="//ws2.sinaimg.cn/large/91d8688ely1g221bt60m7j21gi0p0wfp.jpg" alt="right" width="1890" data-width="1890" data-height="900"></p><h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p>在上面所诉的连接中，找到了解决这个bug的办法。打开<code>source/js/src/schemes/pisces.js</code>文件，将代码从19行开始修改，注释其中的代码，增加相应的函数。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">function setSidebarMarginTop(headerOffset) &#123;</span></span><br><span class="line"><span class="comment">    return $('#sidebar').css(&#123; 'margin-top': headerOffset &#125;);</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">initAffix</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> headerOffset = getHeaderOffset();</span><br><span class="line">    <span class="keyword">var</span> footerOffset = getFooterOffset();</span><br><span class="line">   <span class="comment">/*   </span></span><br><span class="line"><span class="comment">    var sidebarHeight = $('#sidebar').height() + NexT.utils.getSidebarb2tHeight();</span></span><br><span class="line"><span class="comment">    var contentHeight = $('#content').height();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    // Not affix if sidebar taller then content (to prevent bottom jumping).</span></span><br><span class="line"><span class="comment">    if (headerOffset + sidebarHeight &lt; contentHeight) &#123;</span></span><br><span class="line"><span class="comment">      sidebarInner.affix(&#123;</span></span><br><span class="line"><span class="comment">        offset: &#123;</span></span><br><span class="line"><span class="comment">          top   : headerOffset - sidebarOffset,</span></span><br><span class="line"><span class="comment">          bottom: footerOffset</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">      &#125;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    setSidebarMarginTop(headerOffset).css(&#123; 'margin-left': 'initial' &#125;);</span></span><br><span class="line"><span class="comment">  &#125;*/</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* function recalculateAffixPosition() &#123;</span></span><br><span class="line"><span class="comment">    $(window).off('.affix');</span></span><br><span class="line"><span class="comment">    sidebarInner.removeData('bs.affix').removeClass('affix affix-top affix-bottom');</span></span><br><span class="line"><span class="comment">    initAffix();</span></span><br><span class="line"><span class="comment">  &#125; */</span></span><br><span class="line">    sidebarInner.affix(&#123;</span><br><span class="line">      offset: &#123;</span><br><span class="line">        top   : headerOffset - sidebarOffset,</span><br><span class="line">        bottom: footerOffset</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">'#sidebar'</span>).css(&#123; <span class="string">'margin-left'</span>: <span class="string">'initial'</span>, <span class="string">'margin-top'</span>: headerOffset &#125;);</span><br><span class="line">    sidebarInner.affix(<span class="string">'checkPosition'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">resizeListener</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> mql = <span class="built_in">window</span>.matchMedia(<span class="string">'(min-width: 991px)'</span>);</span><br><span class="line">    mql.addListener(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (e.matches) &#123;</span><br><span class="line">        <span class="comment">//recalculateAffixPosition();</span></span><br><span class="line">        sidebarInner.affix(<span class="string">'checkPosition'</span>);</span><br><span class="line">        initAffix();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  initAffix();</span><br><span class="line">  resizeListener();</span><br><span class="line">  <span class="comment">// Fixed wrong top alignment if page scrolled to the bottom after cleared cache and browser refresh.</span></span><br><span class="line"><span class="comment">/*  sidebarInner.affix('checkPosition');*/</span></span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>之后便可以解决上诉问题。</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[关于gemini和Pisces的BUG]]></title>
+    <url>%2F2019%2F04%2F14%2Fbug%2F</url>
+    <content type="text"><![CDATA[展示问题​ 在我搭建的过程中，我发现我的博客出现了以下的效果。 ​ ​ (图均来自https://github.com/theme-next/hexo-theme-next/issues/426) 而我期望的效果为： 解决方案：在上面所诉的连接中，找到了解决这个bug的办法。打开source/js/src/schemes/pisces.js文件，将代码从19行开始修改，注释其中的代码，增加相应的函数。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758/*function setSidebarMarginTop(headerOffset) &#123; return $('#sidebar').css(&#123; 'margin-top': headerOffset &#125;); &#125;*/ function initAffix() &#123; var headerOffset = getHeaderOffset(); var footerOffset = getFooterOffset(); /* var sidebarHeight = $('#sidebar').height() + NexT.utils.getSidebarb2tHeight(); var contentHeight = $('#content').height(); // Not affix if sidebar taller then content (to prevent bottom jumping). if (headerOffset + sidebarHeight &lt; contentHeight) &#123; sidebarInner.affix(&#123; offset: &#123; top : headerOffset - sidebarOffset, bottom: footerOffset &#125; &#125;); &#125; setSidebarMarginTop(headerOffset).css(&#123; 'margin-left': 'initial' &#125;); &#125;*/ /* function recalculateAffixPosition() &#123; $(window).off('.affix'); sidebarInner.removeData('bs.affix').removeClass('affix affix-top affix-bottom'); initAffix(); &#125; */ sidebarInner.affix(&#123; offset: &#123; top : headerOffset - sidebarOffset, bottom: footerOffset &#125; &#125;); $('#sidebar').css(&#123; 'margin-left': 'initial', 'margin-top': headerOffset &#125;); sidebarInner.affix('checkPosition'); &#125; function resizeListener() &#123; var mql = window.matchMedia('(min-width: 991px)'); mql.addListener(function(e) &#123; if (e.matches) &#123; //recalculateAffixPosition(); sidebarInner.affix('checkPosition'); initAffix(); &#125; &#125;); &#125; initAffix(); resizeListener(); // Fixed wrong top alignment if page scrolled to the bottom after cleared cache and browser refresh./* sidebarInner.affix('checkPosition');*/&#125;); 之后便可以解决上诉问题。]]></content>
       <categories>
-          
-          <category> next </category>
-          
+        <category>next</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> bug </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>second</title>
-      <link href="/2019/04/12/second/"/>
-      <url>/2019/04/12/second/</url>
-      
-        <content type="html"><![CDATA[<h1 id="重新捡回"><a href="#重新捡回" class="headerlink" title="重新捡回"></a>重新捡回</h1><p>​    重新捡回这个blog，来记录自己的点点滴滴。在捡回的过程中也是出现了些问题。</p><a id="more"></a><h2 id="域名过期了"><a href="#域名过期了" class="headerlink" title="域名过期了"></a>域名过期了</h2><p>​    这个实在是头疼，网络上很多的教程都是记录如何绑定域名的，而不是如何解除绑定的，后来找到一篇文章：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  清空CNAME文件，再提交一次。如果直接删除项目，无法触发后台的域名更新操作。</span><br><span class="line">所以，应该这样处理，提交成功等一会再访问xxx.github.io，就不会跳到自定义的域</span><br><span class="line">名了。如果发现还不行，就有可能是浏览器缓存的问题，导致重定向</span><br><span class="line">了，清空下缓存就可以了。步骤如下：</span><br><span class="line">1、hexo clean</span><br><span class="line">2、将CHAME内容去掉，留个空白文档</span><br><span class="line">3、hexo g</span><br><span class="line">4、hexo d</span><br></pre></td></tr></table></figure><p>​    后来发现还是一直跳转到以前的域名，直到问了舍友，找回了以前的域名，把以前域名解析了才搞定。浪费了几十块钱。</p><h2 id="生成的CNAME文件有域名"><a href="#生成的CNAME文件有域名" class="headerlink" title="生成的CNAME文件有域名"></a>生成的CNAME文件有域名</h2><p>​    找来找去没找到解决办法，也就只能每次</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><p>​    之后删掉CNAME中的域名在执行。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>好了好了，最后找回来了，还算是没有浪费时间。</p>]]></content>
-      
-      
+      <tags>
+        <tag>bug</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[second]]></title>
+    <url>%2F2019%2F04%2F12%2Fsecond%2F</url>
+    <content type="text"><![CDATA[重新捡回​ 重新捡回这个blog，来记录自己的点点滴滴。在捡回的过程中也是出现了些问题。 域名过期了​ 这个实在是头疼，网络上很多的教程都是记录如何绑定域名的，而不是如何解除绑定的，后来找到一篇文章： 12345678 清空CNAME文件，再提交一次。如果直接删除项目，无法触发后台的域名更新操作。所以，应该这样处理，提交成功等一会再访问xxx.github.io，就不会跳到自定义的域名了。如果发现还不行，就有可能是浏览器缓存的问题，导致重定向了，清空下缓存就可以了。步骤如下：1、hexo clean2、将CHAME内容去掉，留个空白文档3、hexo g4、hexo d ​ 后来发现还是一直跳转到以前的域名，直到问了舍友，找回了以前的域名，把以前域名解析了才搞定。浪费了几十块钱。 生成的CNAME文件有域名​ 找来找去没找到解决办法，也就只能每次 1hexo g ​ 之后删掉CNAME中的域名在执行。 1hexo d 好了好了，最后找回来了，还算是没有浪费时间。]]></content>
       <categories>
-          
-          <category> next </category>
-          
+        <category>next</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 解除域名 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>my first blog</title>
-      <link href="/2018/09/30/my-first-blog/"/>
-      <url>/2018/09/30/my-first-blog/</url>
-      
-        <content type="html"><![CDATA[<h1 id="记录第一次"><a href="#记录第一次" class="headerlink" title="记录第一次"></a>记录第一次</h1><p>​    摸索了一个早上，终于把这个基于github的博客给搭建好了，在搭建的过程中还是比较顺利的。</p><p>​    </p>]]></content>
-      
-      
+      <tags>
+        <tag>解除域名</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[my first blog]]></title>
+    <url>%2F2018%2F09%2F30%2Fmy-first-blog%2F</url>
+    <content type="text"><![CDATA[记录第一次​ 摸索了一个早上，终于把这个基于github的博客给搭建好了，在搭建的过程中还是比较顺利的。 ​]]></content>
       <categories>
-          
-          <category> next </category>
-          
+        <category>next</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> first </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>first</tag>
+      </tags>
+  </entry>
 </search>
