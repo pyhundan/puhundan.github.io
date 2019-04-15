@@ -10,4 +10,6 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
+
 Sitemap: http://www.frozenluo.club/sitemap.xml
+Sitemap: http://www.frozenluo.club/baidusitemap.xml
