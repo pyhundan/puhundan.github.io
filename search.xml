@@ -1,55 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[字节跳动面试总结（一）]]></title>
-    <url>%2F2019%2F04%2F16%2F%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[2020年字节跳动暑期实习面试在大三下这个学期，我的专业基本上没什么课，而且暑期实习也渐渐的开始招人了，所以几个大厂都投了简历过去，均去了笔试，然而笔试过了的也就只有字节跳动，哎。说到底还是自己菜。在字节跳动的面试中，一面是过了，然后二面十分钟就挂了。就在这里总结一下面试的问题和经验吧。 问题：涉及面还是在专业知识上，算法，语言的基础知识，计算机网络，操作系统都有涉及到。 算法：二面没有坚持到考算法的地步，于是就只有一面考的算法。其中算法考了==全排列==问题。说起来也是巧合，在前一晚隔壁宿舍过来问了这个全排列问题。就在这里列一下代码吧。 12345678910111213141516171819202122232425void perm1(vector&lt;int&gt; &amp;nums,int n,int m)//m是数组大小&#123; if(n==m)//只剩下一个元素的时候输出 //a.push_back(nums); &#123; for(int k=0;k&lt;=m;k++) cout&lt;&lt;nums[k]; cout&lt;&lt;" "; &#125; else &#123; for(int j=n;j&lt;=m;j++) &#123; int temp=nums[j]; nums[j]=nums[n]; nums[n]=temp; perm1(nums,n+1,m); temp=nums[j]; nums[j]=nums[n]; nums[n]=temp; &#125; &#125;&#125; 编程语言OOP（面对对象编程）的概念首先有3个特性，封装性，继承性，多态性。 封装性：也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的类或者操作进行信息隐藏。也就是只保留接口和方法与外部联系。 继承性：使用现有的类的所有功能，可以无需重新编写原来的类的情况下对这些功能进行扩展。增加代码的重用性。 通过继承的类称为：“子类”或者“派生类” 被继承的类称为：“父类”或者“超类” 继承的过程一般是从一般到特殊的过程。 多态性：多个子类中虽然都有同一个方法，但是这些子类实例化的对象调用这些相同的方法后可以获得不同的结果，多态性增强了软件的灵活性。 实现多态类的方法有三种手段：1、虚方法 2、抽象类 3、接口 重写和重载的区别重写：存在与子类和父类之间，子类定义的方法和父类的方法具有相同的方法名，相同的参数列表和相同的返回类型。 1、子类不同重写final 2、必须重写abstract 重载：同一个类中的多个方法有相同的方法名，但它们具有不同的参数列表，返回类型也可以不一样。 区别：都是实现多态性的方式。重载是实现编译时多态性（静态）。重写时实现运行时的多态性（动态）。重载发生在一个类中，重写发生在子父类之间，必须有相同的返回类型，参数列表，抛出相同的异常等。 C++中的析构函数对象消亡的时候自动调用，释放对象占用的内存。 特点： 1、函数名时在类名前加上～，无参数且无返回值。 2、一个类只能有且只有一个析构函数，如果没有显式的定义，系统会生成一个缺省的析构函数。 3、析构函数不能重载。每有一次构造函数的调用就会有一次析构函数的调用。 java 两个被相互引用的对象能否被回收举个例子： 123456789101112131415161718class A&#123; public B bb;&#125;class B&#123; public A aa;&#125;public class Test&#123; public static void main(String[] args)&#123; A a=new A(); B b=new B(); a.bb=b; b.aa=a; a=null; b=null; &#125;&#125; 具体没找到具体的答案，但是找到了一些java回收机制。两个互相引用对象的垃圾回收 判断对象是否存活。 1、引用计数法: 给对象添加一个引用计数器，每当有一个地方引用它时，计数器值就加1，当引用失效时，计数器值就减1。任何时候计数器为0的对象就是不可能再被使用的。但是主流的java虚拟机没有采用引用计数法，其中最主要的原因就是他很难解决上面的问题，也就是对象之间相互引用的问题。 2、可达性分析算法（主流）： 基本思想：通过一系列的被称为“gc roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到“gc roots”没有任何引用链相链接时候，则此证明对象时不可用的。 可作为“gc roots”的对象 （1）虚拟机栈（栈针中的局部变量表）中引用的对象。 （2）方法区中类静态属性引用的对象。 （3）方法区中常量引用的对象。 （4）本地方法栈中JNI引用的对象。 等有空了再更新之后的内容，也就是操作系统和计算机网络的，无非也是考那几样内容，主要还是自己学过的忘记了。 参考： C++之类的析构函数]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>字节跳动面试总结（二）</title>
+      <link href="/2019/04/19/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+      <url>/2019/04/19/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h2 id="字节跳动面试总结"><a href="#字节跳动面试总结" class="headerlink" title="字节跳动面试总结"></a>字节跳动面试总结</h2><p>紧接着上面的总结，面试过程中出现了计算机网络和操作系统的部分知识，借着一次总结让自己复习一下以前学过的知识。</p><a id="more"></a><h3 id="操作系统："><a href="#操作系统：" class="headerlink" title="操作系统："></a>操作系统：</h3><h4 id="堆栈、队列"><a href="#堆栈、队列" class="headerlink" title="堆栈、队列"></a>堆栈、队列</h4><h5 id="堆和栈（FILO）"><a href="#堆和栈（FILO）" class="headerlink" title="堆和栈（FILO）"></a>堆和栈（FILO）</h5><p>一直说堆栈堆栈，其实两个是不同的东西。</p><p><strong>堆（heap）</strong>——一般由程序员分配释放，若程序员不释放，程序结束后由OS决定释放。（面对对象程序来说，new出来的任何对象，无论是对象内部的成员变量，局部变量，类变量，它们指向的对象都存储在堆内存中，速度较栈慢，存储的地址一般是链式，内存较大不容易溢出）</p><p><strong>栈（stack）</strong>——由编译器自动分配释放，存放函数的参数值，局部变量值等。其操作方式类似于数据结构中的栈操作(LIFO)。（栈内存用来存储函数内部包括main函数的局部变量、方法调用以及函数的参数值，是系统自动分配，一般速度比较快；存储地址是连续且存在有限栈容量，会出现溢出的现象）</p><h5 id="队列（queue）（FIFO）"><a href="#队列（queue）（FIFO）" class="headerlink" title="队列（queue）（FIFO）"></a>队列（queue）（FIFO）</h5><p>队列是一种特殊的线性表，是一种先进先出（FIFO）的数据结构。</p><h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>死锁的概念：多个进程因竞争资源而造成的一种僵局，若无外力作用，这些进程都将永远不能再向前推进。也就是若系统中存在一组（两个或多个进程），它们中的每一个进程都占用了某种资源而又都在等待其中另一进程所占用的资源，这种等待永远不能结束。</p><h5 id="产生死锁的原因"><a href="#产生死锁的原因" class="headerlink" title="产生死锁的原因"></a>产生死锁的原因</h5><ol><li><strong>竞争资源</strong>：当系统中供多个进程所共享的资源不足以满足它们所需要时，引起它们对资源的竞争而产生死锁。</li><li><strong>进程推进顺序非法</strong>：进程在运行过程中请求和释放资源的顺序不当，导致进程死锁。</li></ol><h5 id="资源死锁的四个必要条件"><a href="#资源死锁的四个必要条件" class="headerlink" title="资源死锁的四个必要条件"></a>资源死锁的四个必要条件</h5><ol><li><strong>互斥条件</strong>：进程互斥使用资源，任意时刻一个资源只能被一个进程使用，若进程申请一个被占用的资源是，该进程会被设置为等待状态。</li><li><strong>占有并等待条件</strong>：若一个进程申请一个被占用资源而得不到满足时，不释放已经占用的资源。</li><li><strong>不可剥夺条件</strong>：进程所占用的资源只能由自己释放。</li><li><strong>循环等待条件</strong>：存在一个循环等待链。</li></ol><p>这四个条件时==必要条件==。只要发生死锁则这四个条件必然成立。</p><h4 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h4><p><strong>进程</strong>：可并发执行程序在一个数据集上的一次执行过程，它是系统进行资源分配的基本单位。</p><p><strong>线程</strong>：线程是进程中的一条执行路径，有自己私用的堆栈和处理机执行环境，共享父进程的主存，单个进程可以创建许多个线程。</p><p>进程是<strong>任务调度</strong>的单位，也是<strong>系统资源的分配单位</strong>。<br>线程是<strong>进程中的一条执行路径</strong>，当系统支持多线程处理时，线程是<strong>任务调度</strong>的单位，但不是<strong>系统资源的分配单位</strong>。线程完全继承父进程占有的资源，只是当它活动时有自己的<strong>运行现场</strong>。</p><h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><h4 id="在浏览器输入URL后经历的步骤："><a href="#在浏览器输入URL后经历的步骤：" class="headerlink" title="在浏览器输入URL后经历的步骤："></a>在浏览器输入URL后经历的步骤：</h4><ol><li>输入URL后，浏览器发起DNS查询请求。</li><li>建立TCP连接</li><li>浏览器向web服务器发送一个HTTP请求</li><li>发送响应数据给客户端</li><li>浏览器解析http response</li></ol><p><img src="//wx1.sinaimg.cn/mw690/91d8688ely1g2ucmfpfrsj21740waduo.jpg" alt="URL"></p>]]></content>
+      
+      
       <categories>
-        <category>面试</category>
+          
+          <category> 面试 </category>
+          
       </categories>
-      <tags>
-        <tag>总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hexo提交sitemap提示URL错误]]></title>
-    <url>%2F2019%2F04%2F15%2Fabouttogoogle%2F</url>
-    <content type="text"><![CDATA[问题新博客搭建后，安装网上教程一步步来，后来发现他们的教程都是老版的教程，baidu和google的站点服务均换了新版，baidu现在需要实名制了，要手持身份证，我思考了一番觉得十分的麻烦，所以只提交google上，但是提交后发现下面的问题： 点开发现说是URL出错，后来网上找了篇文章才解决问题。 具体是修改 node_modules/hexo-generator-sitemap/sitemap.xml中的代码： 12345678910111213&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt; &#123;% for post in posts %&#125; &lt;url&gt; &lt;loc&gt;&#123;&#123; (config.urlforgoogle+post.path) | uriencode &#125;&#125;&lt;/loc&gt; &#123;% if post.updated %&#125; &lt;lastmod&gt;&#123;&#123; post.updated.toISOString() &#125;&#125;&lt;/lastmod&gt; &#123;% elif post.date %&#125; &lt;lastmod&gt;&#123;&#123; post.date.toISOString() &#125;&#125;&lt;/lastmod&gt; &#123;% endif %&#125; &lt;/url&gt; &#123;% endfor %&#125;&lt;/urlset&gt; 其中urlforgoogle是个变量，在根目录中的 _config.yml中添加： 1urlforgoogle: http://www.frozenluo.club/ 然后hexo d -g,再在google search console提交sitemap便可以通过。 参考链接：]]></content>
+      
+      
+        <tags>
+            
+            <tag> 总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>字节跳动面试总结（一）</title>
+      <link href="/2019/04/16/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/"/>
+      <url>/2019/04/16/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="2020年字节跳动暑期实习面试"><a href="#2020年字节跳动暑期实习面试" class="headerlink" title="2020年字节跳动暑期实习面试"></a>2020年字节跳动暑期实习面试</h2><p>在大三下这个学期，我的专业基本上没什么课，而且暑期实习也渐渐的开始招人了，所以几个大厂都投了简历过去，均去了笔试，然而笔试过了的也就只有字节跳动，哎。说到底还是自己菜。在字节跳动的面试中，一面是过了，然后二面十分钟就挂了。就在这里总结一下面试的问题和经验吧。</p><a id="more"></a><h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>涉及面还是在专业知识上，算法，语言的基础知识，计算机网络，操作系统都有涉及到。</p><h4 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h4><p>二面没有坚持到考算法的地步，于是就只有一面考的算法。其中算法考了<strong>==全排列==</strong>问题。说起来也是巧合，在前一晚隔壁宿舍过来问了这个全排列问题。就在这里列一下代码吧。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">perm1</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums,<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span><span class="comment">//m是数组大小</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==m)<span class="comment">//只剩下一个元素的时候输出</span></span><br><span class="line">        <span class="comment">//a.push_back(nums);</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=m;k++)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;nums[k];</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=n;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp=nums[j];</span><br><span class="line">            nums[j]=nums[n];</span><br><span class="line">            nums[n]=temp;</span><br><span class="line">            </span><br><span class="line">            perm1(nums,n+<span class="number">1</span>,m);</span><br><span class="line">            </span><br><span class="line">            temp=nums[j];</span><br><span class="line">            nums[j]=nums[n];</span><br><span class="line">            nums[n]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h4><h5 id="OOP（面对对象编程）的概念"><a href="#OOP（面对对象编程）的概念" class="headerlink" title="OOP（面对对象编程）的概念"></a>OOP（面对对象编程）的概念</h5><p>首先有3个特性，封装性，继承性，多态性。</p><p><strong>封装性：</strong>也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的类或者操作进行信息隐藏。也就是只保留接口和方法与外部联系。</p><p><strong>继承性：</strong>使用现有的类的所有功能，可以无需重新编写原来的类的情况下对这些功能进行扩展。增加代码的重用性。</p><p>通过继承的类称为：“<u>子类</u>”或者“<u>派生类</u>”</p><p>被继承的类称为：“<u>父类</u>”或者“<u>超类</u>”</p><p>继承的过程一般是从一般到特殊的过程。</p><p><strong>多态性：</strong>多个子类中虽然都有同一个方法，但是这些子类实例化的对象调用这些相同的方法后可以获得不同的结果，多态性增强了软件的灵活性。</p><p>实现多态类的方法有三种手段：1、虚方法   2、抽象类   3、接口</p><h5 id="重写和重载的区别"><a href="#重写和重载的区别" class="headerlink" title="重写和重载的区别"></a>重写和重载的区别</h5><p><strong>重写：</strong>存在与子类和父类之间，子类定义的方法和父类的方法具有相同的方法名，相同的参数列表和相同的返回类型。</p><p>1、子类不同重写final</p><p>2、必须重写abstract</p><p><strong>重载：</strong>同一个类中的多个方法有相同的方法名，但它们具有不同的参数列表，返回类型也可以不一样。</p><p><strong>区别：</strong>都是实现多态性的方式。重载是实现编译时多态性（静态）。重写时实现运行时的多态性（动态）。重载发生在一个类中，重写发生在子父类之间，必须有相同的返回类型，参数列表，抛出相同的异常等。</p><h5 id="C-中的析构函数"><a href="#C-中的析构函数" class="headerlink" title="C++中的析构函数"></a>C++中的析构函数</h5><p>对象消亡的时候自动调用，释放对象占用的内存。</p><p>特点：</p><p>1、函数名时在类名前加上～，无参数且无返回值。</p><p>2、一个类只能有且只有一个析构函数，如果没有显式的定义，系统会生成一个缺省的析构函数。</p><p>3、析构函数不能重载。每有一次构造函数的调用就会有一次析构函数的调用。</p><h5 id="java-两个被相互引用的对象能否被回收"><a href="#java-两个被相互引用的对象能否被回收" class="headerlink" title="java 两个被相互引用的对象能否被回收"></a>java 两个被相互引用的对象能否被回收</h5><p>举个例子：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> B bb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> A aa;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b=<span class="keyword">new</span> B();</span><br><span class="line">        </span><br><span class="line">        a.bb=b;</span><br><span class="line">        b.aa=a;</span><br><span class="line">        </span><br><span class="line">        a=<span class="keyword">null</span>;</span><br><span class="line">        b=<span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>具体没找到具体的答案，但是找到了一些java回收机制。<a href="http://blog.csdn.net/lynn_kun/article/details/73468705" target="_blank" rel="noopener">两个互相引用对象的垃圾回收</a></p><p>判断对象是否存活。</p><p><strong>1、引用计数法</strong>:</p><p>给对象添加一个引用计数器，每当有一个地方引用它时，计数器值就加1，当引用失效时，计数器值就减1。任何时候计数器为0的对象就是不可能再被使用的。但是主流的java虚拟机没有采用引用计数法，其中最主要的原因就是他很难解决上面的问题，也就是对象之间相互引用的问题。</p><p><strong>2、可达性分析算法（主流）：</strong></p><p>基本思想：通过一系列的被称为“gc roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到“gc roots”没有任何引用链相链接时候，则此证明对象时不可用的。</p><p>可作为“gc roots”的对象</p><p>（1）虚拟机栈（栈针中的局部变量表）中引用的对象。</p><p>（2）方法区中类静态属性引用的对象。</p><p>（3）方法区中常量引用的对象。</p><p>（4）本地方法栈中JNI引用的对象。</p><hr><p>等有空了再更新之后的内容，也就是操作系统和计算机网络的，无非也是考那几样内容，主要还是自己学过的忘记了。</p><p>参考：</p><p><a href="https://www.cnblogs.com/MrListening/p/5567762.html" target="_blank" rel="noopener">C++之类的析构函数</a></p>]]></content>
+      
+      
       <categories>
-        <category>next</category>
+          
+          <category> 面试 </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[关于gemini和Pisces的BUG]]></title>
-    <url>%2F2019%2F04%2F14%2FBUG%2F</url>
-    <content type="text"><![CDATA[展示问题​ 在我搭建的过程中，我发现我的博客出现了以下的效果。 ​ ​ (图均来自https://github.com/theme-next/hexo-theme-next/issues/426) 而我期望的效果为： 解决方案：在上面所诉的连接中，找到了解决这个bug的办法。打开source/js/src/schemes/pisces.js文件，将代码从19行开始修改，注释其中的代码，增加相应的函数。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758/*function setSidebarMarginTop(headerOffset) &#123; return $('#sidebar').css(&#123; 'margin-top': headerOffset &#125;); &#125;*/ function initAffix() &#123; var headerOffset = getHeaderOffset(); var footerOffset = getFooterOffset(); /* var sidebarHeight = $('#sidebar').height() + NexT.utils.getSidebarb2tHeight(); var contentHeight = $('#content').height(); // Not affix if sidebar taller then content (to prevent bottom jumping). if (headerOffset + sidebarHeight &lt; contentHeight) &#123; sidebarInner.affix(&#123; offset: &#123; top : headerOffset - sidebarOffset, bottom: footerOffset &#125; &#125;); &#125; setSidebarMarginTop(headerOffset).css(&#123; 'margin-left': 'initial' &#125;); &#125;*/ /* function recalculateAffixPosition() &#123; $(window).off('.affix'); sidebarInner.removeData('bs.affix').removeClass('affix affix-top affix-bottom'); initAffix(); &#125; */ sidebarInner.affix(&#123; offset: &#123; top : headerOffset - sidebarOffset, bottom: footerOffset &#125; &#125;); $('#sidebar').css(&#123; 'margin-left': 'initial', 'margin-top': headerOffset &#125;); sidebarInner.affix('checkPosition'); &#125; function resizeListener() &#123; var mql = window.matchMedia('(min-width: 991px)'); mql.addListener(function(e) &#123; if (e.matches) &#123; //recalculateAffixPosition(); sidebarInner.affix('checkPosition'); initAffix(); &#125; &#125;); &#125; initAffix(); resizeListener(); // Fixed wrong top alignment if page scrolled to the bottom after cleared cache and browser refresh./* sidebarInner.affix('checkPosition');*/&#125;); 之后便可以解决上诉问题。]]></content>
+      
+      
+        <tags>
+            
+            <tag> 总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo提交sitemap提示URL错误</title>
+      <link href="/2019/04/15/abouttogoogle/"/>
+      <url>/2019/04/15/abouttogoogle/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>新博客搭建后，安装网上教程一步步来，后来发现他们的教程都是老版的教程，baidu和google的站点服务均换了新版，baidu现在需要实名制了，要手持身份证，我思考了一番觉得十分的麻烦，所以只提交google上，但是提交后发现下面的问题：</p><p><img src="//wx3.sinaimg.cn/mw690/91d8688ely1g2342rbdgsj21e4038gly.jpg" alt="wrong"></p><a id="more"></a><p>点开发现说是URL出错，后来网上找了篇文章才解决问题。</p><p>具体是修改 <code>node_modules/hexo-generator-sitemap/sitemap.xml</code>中的代码：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">urlset</span> <span class="attr">xmlns</span>=<span class="string">"http://www.sitemaps.org/schemas/sitemap/0.9"</span>&gt;</span></span><br><span class="line">  &#123;% for post in posts %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">loc</span>&gt;</span>&#123;&#123; (config.urlforgoogle+post.path) | uriencode &#125;&#125;<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></span><br><span class="line">    &#123;% if post.updated %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">lastmod</span>&gt;</span>&#123;&#123; post.updated.toISOString() &#125;&#125;<span class="tag">&lt;/<span class="name">lastmod</span>&gt;</span></span><br><span class="line">    &#123;% elif post.date %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">lastmod</span>&gt;</span>&#123;&#123; post.date.toISOString() &#125;&#125;<span class="tag">&lt;/<span class="name">lastmod</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">urlset</span>&gt;</span></span><br></pre></td></tr></table></figure><p>其中urlforgoogle是个变量，在根目录中的 <code>_config.yml</code>中添加：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">urlforgoogle:</span> <span class="attr">http://www.frozenluo.club/</span></span><br></pre></td></tr></table></figure><p>然后<code>hexo d -g</code>,再在google search console提交sitemap便可以通过。</p><p><img src="//ws4.sinaimg.cn/mw690/91d8688ely1g2349r2503j21ey044wet.jpg" alt="right"></p><p>参考链接：</p>]]></content>
+      
+      
       <categories>
-        <category>next</category>
+          
+          <category> next </category>
+          
       </categories>
-      <tags>
-        <tag>bug</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[second]]></title>
-    <url>%2F2019%2F04%2F12%2Fsecond%2F</url>
-    <content type="text"><![CDATA[重新捡回​ 重新捡回这个blog，来记录自己的点点滴滴。在捡回的过程中也是出现了些问题。 域名过期了​ 这个实在是头疼，网络上很多的教程都是记录如何绑定域名的，而不是如何解除绑定的，后来找到一篇文章： 12345678 清空CNAME文件，再提交一次。如果直接删除项目，无法触发后台的域名更新操作。所以，应该这样处理，提交成功等一会再访问xxx.github.io，就不会跳到自定义的域名了。如果发现还不行，就有可能是浏览器缓存的问题，导致重定向了，清空下缓存就可以了。步骤如下：1、hexo clean2、将CHAME内容去掉，留个空白文档3、hexo g4、hexo d ​ 后来发现还是一直跳转到以前的域名，直到问了舍友，找回了以前的域名，把以前域名解析了才搞定。浪费了几十块钱。 生成的CNAME文件有域名​ 找来找去没找到解决办法，也就只能每次 1hexo g ​ 之后删掉CNAME中的域名在执行。 1hexo d 好了好了，最后找回来了，还算是没有浪费时间。]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于gemini和Pisces的BUG</title>
+      <link href="/2019/04/14/BUG/"/>
+      <url>/2019/04/14/BUG/</url>
+      
+        <content type="html"><![CDATA[<h2 id="展示问题"><a href="#展示问题" class="headerlink" title="展示问题"></a>展示问题</h2><p>​    在我搭建的过程中，我发现我的博客出现了以下的效果。</p><p><img src="//ws4.sinaimg.cn/large/91d8688ely1g221ah3p05j21h70pndhi.jpg" alt="wrong" width="1915" data-width="1915" data-height="923">    </p><p>​                                <a id="more"></a></p><p>​        (图均来自<a href="https://github.com/theme-next/hexo-theme-next/issues/426" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next/issues/426</a>)</p><p>而我期望的效果为：<img src="//ws2.sinaimg.cn/large/91d8688ely1g221bt60m7j21gi0p0wfp.jpg" alt="right" width="1890" data-width="1890" data-height="900"></p><h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p>在上面所诉的连接中，找到了解决这个bug的办法。打开<code>source/js/src/schemes/pisces.js</code>文件，将代码从19行开始修改，注释其中的代码，增加相应的函数。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">function setSidebarMarginTop(headerOffset) &#123;</span></span><br><span class="line"><span class="comment">    return $('#sidebar').css(&#123; 'margin-top': headerOffset &#125;);</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">initAffix</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> headerOffset = getHeaderOffset();</span><br><span class="line">    <span class="keyword">var</span> footerOffset = getFooterOffset();</span><br><span class="line">   <span class="comment">/*   </span></span><br><span class="line"><span class="comment">    var sidebarHeight = $('#sidebar').height() + NexT.utils.getSidebarb2tHeight();</span></span><br><span class="line"><span class="comment">    var contentHeight = $('#content').height();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    // Not affix if sidebar taller then content (to prevent bottom jumping).</span></span><br><span class="line"><span class="comment">    if (headerOffset + sidebarHeight &lt; contentHeight) &#123;</span></span><br><span class="line"><span class="comment">      sidebarInner.affix(&#123;</span></span><br><span class="line"><span class="comment">        offset: &#123;</span></span><br><span class="line"><span class="comment">          top   : headerOffset - sidebarOffset,</span></span><br><span class="line"><span class="comment">          bottom: footerOffset</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">      &#125;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    setSidebarMarginTop(headerOffset).css(&#123; 'margin-left': 'initial' &#125;);</span></span><br><span class="line"><span class="comment">  &#125;*/</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* function recalculateAffixPosition() &#123;</span></span><br><span class="line"><span class="comment">    $(window).off('.affix');</span></span><br><span class="line"><span class="comment">    sidebarInner.removeData('bs.affix').removeClass('affix affix-top affix-bottom');</span></span><br><span class="line"><span class="comment">    initAffix();</span></span><br><span class="line"><span class="comment">  &#125; */</span></span><br><span class="line">    sidebarInner.affix(&#123;</span><br><span class="line">      offset: &#123;</span><br><span class="line">        top   : headerOffset - sidebarOffset,</span><br><span class="line">        bottom: footerOffset</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">'#sidebar'</span>).css(&#123; <span class="string">'margin-left'</span>: <span class="string">'initial'</span>, <span class="string">'margin-top'</span>: headerOffset &#125;);</span><br><span class="line">    sidebarInner.affix(<span class="string">'checkPosition'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">resizeListener</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> mql = <span class="built_in">window</span>.matchMedia(<span class="string">'(min-width: 991px)'</span>);</span><br><span class="line">    mql.addListener(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (e.matches) &#123;</span><br><span class="line">        <span class="comment">//recalculateAffixPosition();</span></span><br><span class="line">        sidebarInner.affix(<span class="string">'checkPosition'</span>);</span><br><span class="line">        initAffix();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  initAffix();</span><br><span class="line">  resizeListener();</span><br><span class="line">  <span class="comment">// Fixed wrong top alignment if page scrolled to the bottom after cleared cache and browser refresh.</span></span><br><span class="line"><span class="comment">/*  sidebarInner.affix('checkPosition');*/</span></span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>之后便可以解决上诉问题。</p>]]></content>
+      
+      
       <categories>
-        <category>next</category>
+          
+          <category> next </category>
+          
       </categories>
-      <tags>
-        <tag>解除域名</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[my first blog]]></title>
-    <url>%2F2018%2F09%2F30%2Fmy-first-blog%2F</url>
-    <content type="text"><![CDATA[记录第一次​ 摸索了一个早上，终于把这个基于github的博客给搭建好了，在搭建的过程中还是比较顺利的。 ​]]></content>
+      
+      
+        <tags>
+            
+            <tag> bug </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>second</title>
+      <link href="/2019/04/12/second/"/>
+      <url>/2019/04/12/second/</url>
+      
+        <content type="html"><![CDATA[<h1 id="重新捡回"><a href="#重新捡回" class="headerlink" title="重新捡回"></a>重新捡回</h1><p>​    重新捡回这个blog，来记录自己的点点滴滴。在捡回的过程中也是出现了些问题。</p><a id="more"></a><h2 id="域名过期了"><a href="#域名过期了" class="headerlink" title="域名过期了"></a>域名过期了</h2><p>​    这个实在是头疼，网络上很多的教程都是记录如何绑定域名的，而不是如何解除绑定的，后来找到一篇文章：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  清空CNAME文件，再提交一次。如果直接删除项目，无法触发后台的域名更新操作。</span><br><span class="line">所以，应该这样处理，提交成功等一会再访问xxx.github.io，就不会跳到自定义的域</span><br><span class="line">名了。如果发现还不行，就有可能是浏览器缓存的问题，导致重定向</span><br><span class="line">了，清空下缓存就可以了。步骤如下：</span><br><span class="line">1、hexo clean</span><br><span class="line">2、将CHAME内容去掉，留个空白文档</span><br><span class="line">3、hexo g</span><br><span class="line">4、hexo d</span><br></pre></td></tr></table></figure><p>​    后来发现还是一直跳转到以前的域名，直到问了舍友，找回了以前的域名，把以前域名解析了才搞定。浪费了几十块钱。</p><h2 id="生成的CNAME文件有域名"><a href="#生成的CNAME文件有域名" class="headerlink" title="生成的CNAME文件有域名"></a>生成的CNAME文件有域名</h2><p>​    找来找去没找到解决办法，也就只能每次</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><p>​    之后删掉CNAME中的域名在执行。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>好了好了，最后找回来了，还算是没有浪费时间。</p>]]></content>
+      
+      
       <categories>
-        <category>next</category>
+          
+          <category> next </category>
+          
       </categories>
-      <tags>
-        <tag>first</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 解除域名 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>my first blog</title>
+      <link href="/2018/09/30/my-first-blog/"/>
+      <url>/2018/09/30/my-first-blog/</url>
+      
+        <content type="html"><![CDATA[<h1 id="记录第一次"><a href="#记录第一次" class="headerlink" title="记录第一次"></a>记录第一次</h1><p>​    摸索了一个早上，终于把这个基于github的博客给搭建好了，在搭建的过程中还是比较顺利的。</p><p>​    </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> next </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> first </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
