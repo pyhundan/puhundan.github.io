@@ -120,12 +120,18 @@
 <meta property="og:site_name" content="Frozenluo">
 <meta property="og:description" content="字节跳动面试总结紧接着上面的总结，面试过程中出现了计算机网络和操作系统的部分知识，借着一次总结让自己复习一下以前学过的知识。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/91d8688ely1g2ucmfpfrsj21740waduo.jpg">
-<meta property="og:updated_time" content="2019-05-08T15:58:05.848Z">
+<meta property="og:image" content="http://tvax1.sinaimg.cn/large/91d8688ely1g2ucrhx7vcj21740waduo.jpg">
+<meta property="og:image" content="http://tvax1.sinaimg.cn/large/91d8688ely1g2udrl56qyj20bz05dwex.jpg">
+<meta property="og:image" content="http://tvax1.sinaimg.cn/large/91d8688ely1g2udqdkiw9j20hx064gm9.jpg">
+<meta property="og:image" content="http://tvax1.sinaimg.cn/large/91d8688ely1g2uwpqn3uvj20ep081gnr.jpg">
+<meta property="og:image" content="http://tvax1.sinaimg.cn/large/91d8688ely1g2uwvbo03qj20e20760to.jpg">
+<meta property="og:image" content="http://tvax3.sinaimg.cn/large/91d8688ely1g2uz31a9t5j21220lyq6h.jpg">
+<meta property="og:image" content="http://tvax4.sinaimg.cn/large/91d8688ely1g2uz3tx8s7j212k0p80xf.jpg">
+<meta property="og:updated_time" content="2019-05-09T06:44:54.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字节跳动面试总结（二）">
 <meta name="twitter:description" content="字节跳动面试总结紧接着上面的总结，面试过程中出现了计算机网络和操作系统的部分知识，借着一次总结让自己复习一下以前学过的知识。">
-<meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/91d8688ely1g2ucmfpfrsj21740waduo.jpg">
+<meta name="twitter:image" content="http://tvax1.sinaimg.cn/large/91d8688ely1g2ucrhx7vcj21740waduo.jpg">
 
 
 
@@ -405,7 +411,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-08 23:58:05" itemprop="dateModified" datetime="2019-05-08T23:58:05+08:00">2019-05-08</time>
+                <time title="修改时间：2019-05-09 14:44:54" itemprop="dateModified" datetime="2019-05-09T14:44:54+08:00">2019-05-09</time>
               
             
           </span>
@@ -494,7 +500,45 @@
 <li>发送响应数据给客户端</li>
 <li>浏览器解析http response</li>
 </ol>
-<p><img src="//wx1.sinaimg.cn/mw690/91d8688ely1g2ucmfpfrsj21740waduo.jpg" alt="URL"></p>
+<p><img src="//tvax1.sinaimg.cn/large/91d8688ely1g2ucrhx7vcj21740waduo.jpg" alt="URL"></p>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>TCP(Transmission Control Protocol 传输控制协议) 是面向连接的、可靠、基于IP的传输层协议。</p>
+<h4 id="TCP可靠性"><a href="#TCP可靠性" class="headerlink" title="TCP可靠性"></a>TCP可靠性</h4><p>相对于UDP而言，UDP协议提供的是不可靠的数据传输服务，不保证数据包能够传送至对端；而TCP协议保证数据能够传输至对端，并且保证数据不会损坏或者丢失。</p>
+<h4 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h4><p><img src="//tvax1.sinaimg.cn/large/91d8688ely1g2udrl56qyj20bz05dwex.jpg" alt="shiji" width="431" data-width="431" data-height="193"></p>
+<p><center>拥塞控制的作用</center></p>
+<p><img src="//tvax1.sinaimg.cn/large/91d8688ely1g2udqdkiw9j20hx064gm9.jpg" alt="20180610191132726" width="645" data-width="645" data-height="220"></p>
+<h5 id="1、慢开始"><a href="#1、慢开始" class="headerlink" title="1、慢开始"></a>1、慢开始</h5><p>当主机开始发送数据时，由于不清楚网络负载的情况，所以如果立刻把大量的数据字节注入到网络中，那么就有可能引起网络发生拥塞，经验表明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是说由小到大逐渐增大拥塞窗口数值。</p>
+<p>一开始设置<strong>拥塞窗口cwnd</strong>，发送方让自己的发送窗口等于拥塞窗口。</p>
+<p><img src="//tvax1.sinaimg.cn/large/91d8688ely1g2uwpqn3uvj20ep081gnr.jpg" alt="20180610191717379" width="529" data-width="529" data-height="289"></p>
+<p>每经过一次传输轮次，拥塞窗口cwnd就加倍。</p>
+<p>为了防止拥塞窗口cwnd增长过大引起网络拥塞，还需要设置一个慢开始门限(ssthresh)：</p>
+<p>​    当cwnd&lt;ssthresh时，使用慢开始算法。</p>
+<p>​    当cwnd=ssthresh时，可以使用慢开始也可以使用拥塞避免算法。</p>
+<p>​    当cwnd&gt;ssthresh时，停止慢开始使用拥塞避免算法。</p>
+<h5 id="2、拥塞避免"><a href="#2、拥塞避免" class="headerlink" title="2、拥塞避免"></a>2、拥塞避免</h5><p>拥塞避免并非完全能够避免拥塞，是说在拥塞避免阶段将拥塞窗口控制为按线性规律增长，<strong>使网络比较不容易出现拥塞。</strong></p>
+<h5 id="3、快重传"><a href="#3、快重传" class="headerlink" title="3、快重传"></a>3、快重传</h5><p>快重传要求接收方在收到一个失序的报文段后就立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时捎带确认。快重传算法规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段，而不必继续等待设置的重传计时器时间到期。 </p>
+<p><img src="//tvax1.sinaimg.cn/large/91d8688ely1g2uwvbo03qj20e20760to.jpg" alt="20180610195854523" width="506" data-width="506" data-height="258"></p>
+<p>由于不需要等待设置的重传计时器到期，能尽早重传未被确认的报文段，能提高整个网络的吞吐量。</p>
+<h5 id="4、快恢复"><a href="#4、快恢复" class="headerlink" title="4、快恢复"></a>4、快恢复</h5><ol>
+<li>采用快恢复算法时，慢开始只在TCP连接建立时和网络出现超时时才使用。 </li>
+<li>当发送方连续收到三个重复确认时，就执行“乘法减小”算法，把ssthresh门限设置为当前拥塞窗口的一半。但是接下去并不执行慢开始算法，执行拥塞避免的算法。</li>
+</ol>
+<h4 id="三次握手四次挥手"><a href="#三次握手四次挥手" class="headerlink" title="三次握手四次挥手"></a>三次握手四次挥手</h4><h5 id="TCP建立连接"><a href="#TCP建立连接" class="headerlink" title="TCP建立连接"></a>TCP建立连接</h5><p><img src="//tvax3.sinaimg.cn/large/91d8688ely1g2uz31a9t5j21220lyq6h.jpg" alt="屏幕快照 2019-05-09 12.51.41" width="1370" data-width="1370" data-height="790"></p>
+<ol>
+<li><p>建立连接时，向B发出连接请求报文段，这时候首部中SYN=1，同时选择一个序号seq=x。TCP规定SYN报文段（也就是SYN=1）不能携带数据，但是要消耗一个序号，此时TCP客户端进入SYN-SENT（同步已发送）状态。</p>
+</li>
+<li><p>B收到连接请求报文段后。如同意建立连接，则向A发送确认。在确认报文段把SYN和ACK均置1，确认号为ack=x+1,同时自己也选择一个初始序号seq=y.确认报文段也不能携带数据，但是也要消耗一个序号。此时TCP服务器进入SYN-RCVD（同步收到）状态。</p>
+</li>
+<li><p>TCP客户端收到B的确认后，还要向B发送确认。确认报文段中ACK置1，确认号ack=y+1,自己的序号为seq=x+1。ACK报文段可携带数据，<strong>如果不携带就不消耗序号，携带的话序号则为seq=x+1。</strong>此时A进入ESTABLISHED(已连接)状态。</p>
+<p>B收到A的确认后，也进入ESTABLISHED状态。</p>
+</li>
+</ol>
+<h5 id="TCP释放连接"><a href="#TCP释放连接" class="headerlink" title="TCP释放连接"></a>TCP释放连接</h5><p><img src="//tvax4.sinaimg.cn/large/91d8688ely1g2uz3tx8s7j212k0p80xf.jpg" alt="屏幕快照 2019-05-09 12.52.20" width="1388" data-width="1388" data-height="908"></p>
+<ol>
+<li>A的应用进程向TCP发出连接释放报文段，并停止发送数据，主动关闭TCP连接。连接释放报文段首部终止控制位FIN=1，序号seq=u,等于前面已传送过的数据的最后一个字节的序号+1，这时A进入FIN-WAIT-1(终止等待1)状态，等待B的确认。</li>
+<li>B收到连接释放报文后发送确认，确认号为ack=u+1,而这个报文段的序号为seq=v,等于B前面已传送过的数据的最后一个字节序号加1。然后B进入CLOSE=WAIT(关闭等待)状态。此时TCP处于半关闭状态，也就是B-A这一方向的连接还未关闭。</li>
+<li>若B没有向A发送的数据，应用进程就通知TCP释放连接。这时B发送释放连接的报文FIN=1，ACK=1，序号seq=u,（可能在半关闭状态B又发送了一些数据），重复上一次发送的确认号ack=u+1。B进入LAST-ACK（最后确认）状态，等待A的确认。</li>
+<li>A收到B的连接释放报文后，A发送确认报文，在确认报文段中，ACK=1，确认号为ack=w+1，而自己的序号为seq=u+1，进入到TIME-WAIT（时间等待）状态，必须经过时间等待计时器（TIME-WAIT timer）设置的时间后，A才进入到CLOSED状态。</li>
+</ol>
 
       
     </div>
@@ -692,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字节跳动面试总结"><span class="nav-number">1.</span> <span class="nav-text">字节跳动面试总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统："><span class="nav-number">1.1.</span> <span class="nav-text">操作系统：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#堆栈、队列"><span class="nav-number">1.1.1.</span> <span class="nav-text">堆栈、队列</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#堆和栈（FILO）"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">堆和栈（FILO）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#队列（queue）（FIFO）"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">队列（queue）（FIFO）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-number">1.1.2.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#产生死锁的原因"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">产生死锁的原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#资源死锁的四个必要条件"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">资源死锁的四个必要条件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程和线程"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程和线程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络"><span class="nav-number">1.2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在浏览器输入URL后经历的步骤："><span class="nav-number">1.2.1.</span> <span class="nav-text">在浏览器输入URL后经历的步骤：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字节跳动面试总结"><span class="nav-number">1.</span> <span class="nav-text">字节跳动面试总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统："><span class="nav-number">1.1.</span> <span class="nav-text">操作系统：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#堆栈、队列"><span class="nav-number">1.1.1.</span> <span class="nav-text">堆栈、队列</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#堆和栈（FILO）"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">堆和栈（FILO）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#队列（queue）（FIFO）"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">队列（queue）（FIFO）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-number">1.1.2.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#产生死锁的原因"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">产生死锁的原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#资源死锁的四个必要条件"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">资源死锁的四个必要条件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程和线程"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程和线程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络"><span class="nav-number">1.2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在浏览器输入URL后经历的步骤："><span class="nav-number">1.2.1.</span> <span class="nav-text">在浏览器输入URL后经历的步骤：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP"><span class="nav-number">1.2.2.</span> <span class="nav-text">TCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP可靠性"><span class="nav-number">1.2.3.</span> <span class="nav-text">TCP可靠性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP的拥塞控制"><span class="nav-number">1.2.4.</span> <span class="nav-text">TCP的拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、慢开始"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">1、慢开始</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、拥塞避免"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">2、拥塞避免</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、快重传"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">3、快重传</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、快恢复"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">4、快恢复</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手四次挥手"><span class="nav-number">1.2.5.</span> <span class="nav-text">三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP建立连接"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">TCP建立连接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP释放连接"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">TCP释放连接</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
